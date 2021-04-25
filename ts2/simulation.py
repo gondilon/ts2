@@ -682,7 +682,7 @@ class Simulation(QtCore.QObject):
         routes.sort(key=lambda x: x.routeNum)
         return routes
 
-    def createTrackItemsLinks(self):
+    def createTrackItemsLinks(self): #todo: Modify link logic to take into accoutn extra spacing
         """Find the items that are linked together through their coordinates
         and populate the _nextItem and _previousItem variables of each items.
         """

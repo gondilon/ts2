@@ -106,4 +106,4 @@ class EndItem(abstract.TrackItem):
                 pen.setColor(Qt.cyan)
             p.setPen(pen)
             p.drawEllipse(-1.5, -1.5, 3, 3)
-            self.drawConnectionRect(p, QtCore.QPointF(0, 0))
+            self.drawConnectionRect(p, QtCore.QPointF(0, 0), True)

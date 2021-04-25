@@ -266,8 +266,10 @@ class LineItem(abstract.ResizableItem):
         p.setPen(pen)
         p.drawLine(self.line)
         if self.simulation.context == utils.Context.EDITOR_SCENERY:
-            self.drawConnectionRect(p, self.line.p1())
-            self.drawConnectionRect(p, self.line.p2())
+            #print("Point1 ", self.line.p1(), "Point2 ", self.line.p2())
+            self.drawConnectionRect(p, self.line.p1(), True)
+            self.drawConnectionRect(p, self.line.p2(), False)
+
 
     def drawTrain(self):
         """Draws the train(s) on the line, if any"""
@@ -294,7 +296,7 @@ class LineItem(abstract.ResizableItem):
         if lines:
             # Set the pen
             p = QtGui.QPen()
-            p.setWidth(3)
+            p.setWidth(3) #sets the width of the train graphics.
             p.setJoinStyle(Qt.RoundJoin)
             p.setCapStyle(Qt.RoundCap)
             p.setColor(Qt.red)

@@ -614,8 +614,8 @@ class SignalItem(abstract.TrackItem):
 
             # Draw the connection rects
             if isEditorScenery:
-                self.drawConnectionRect(p, QtCore.QPointF(0, 0))
-                self.drawConnectionRect(p, QtCore.QPointF(10, 0))
+                self.drawConnectionRect(p, QtCore.QPointF(0, 0), True)
+                self.drawConnectionRect(p, QtCore.QPointF(10, 0), False)
 
         elif itemId == SignalItem.BERTH_GRAPHIC_ITEM:
             # Berth
@@ -639,7 +639,7 @@ class SignalItem(abstract.TrackItem):
 
                 # Draw connection rects
                 if isEditorScenery:
-                    self.drawConnectionRect(p, QtCore.QPointF(0, 0))
+                    self.drawConnectionRect(p, QtCore.QPointF(0, 0), True)
 
     def graphicsMouseMoveEvent(self, event, itemId=0):
         """This function is called by the owned TrackGraphicsItem to handle

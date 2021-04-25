@@ -906,7 +906,7 @@ class Editor(simulation.Simulation):
             self.expandBackgroundTo(ti)
 
     @QtCore.pyqtSlot()
-    def validateScenery(self):
+    def validateScenery(self): #validates that all scenery items are linked to each other.
         """Validates the scenery, i.e. tries to create all links between
         TrackItems, checks and set sceneryValidated to True if succeeded"""
         self.updatePlaces()
@@ -957,7 +957,7 @@ class Editor(simulation.Simulation):
             del self._routes[routeNum]
 
     @QtCore.pyqtSlot(str)
-    def prepareRoute(self, signalId):
+    def prepareRoute(self, signalId): #todo change this to use exit signals.
         """Prepares the route starting with the SignalItem given by
         _selectedSignal and ending at signalId. Sets _selectedSignal to signalId
         if it is not set. Preparation means:

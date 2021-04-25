@@ -386,6 +386,7 @@ class PointsItem(abstract.TrackItem):
     # ## Graphics methods ###############################################
 
     def graphicsPaint(self, p, options, itemId, widget=None):
+        #todo: Figure out the connection logic so that Points export properly.
         """Draws the points on the painter given as parameter.
         This function is called by PointsGraphicsItem.paint.
         @param p The painter on which to draw the signal."""
@@ -394,17 +395,17 @@ class PointsItem(abstract.TrackItem):
         if self.simulation.context == utils.Context.EDITOR_SCENERY:
             p.setPen(pen)
             p.drawLine(self.commonEnd, self.middle)
-            pen.setWidth(2)
+            pen.setWidth(2) #sets the size of common lines
             p.setPen(pen)
             p.drawLine(self.normalEnd, self.middle)
-            pen.setWidth(1)
+            pen.setWidth(1) #set size of normal/reverse lines
             p.setPen(pen)
             p.drawLine(self.reverseEnd, self.middle)
 
             # Draw the connection rects
-            self.drawConnectionRect(p, self.commonEnd)
-            self.drawConnectionRect(p, self.normalEnd)
-            self.drawConnectionRect(p, self.reverseEnd)
+            self.drawConnectionRect(p, self.commonEnd, False)
+            self.drawConnectionRect(p, self.normalEnd, False)
+            self.drawConnectionRect(p, self.reverseEnd, False)
         else:
             if self.trainPresent():
                 pen.setColor(Qt.red)

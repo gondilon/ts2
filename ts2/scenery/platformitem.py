@@ -151,8 +151,8 @@ class PlatformItem(abstract.ResizableItem):
         painter.setBrush(QtGui.QBrush(QtGui.QColor("#88ffbb")))
         painter.drawRect(0, 0, x2 - x1, y2 - y1)
         if self.simulation.context == utils.Context.EDITOR_SCENERY:
-            self.drawConnectionRect(painter, QtCore.QPointF(0, 0))
-            self.drawConnectionRect(painter, QtCore.QPointF(x2 - x1, y2 - y1))
+            self.drawConnectionRect(painter, QtCore.QPointF(0, 0), True)
+            self.drawConnectionRect(painter, QtCore.QPointF(x2 - x1, y2 - y1), False)
 
     def graphicsMousePressEvent(self, e, itemId):
         """Reimplemented from TrackItem.graphicsMousePressEvent to handle the

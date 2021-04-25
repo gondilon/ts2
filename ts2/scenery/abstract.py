@@ -483,7 +483,7 @@ class TrackItem(QtCore.QObject):
         :rtype: ``QPen``
         """
         pen = QtGui.QPen()
-        pen.setWidth(3)
+        pen.setWidth(5) #changes width of all line elements
         pen.setJoinStyle(Qt.RoundJoin)
         pen.setCapStyle(Qt.RoundCap)
         if self.highlighted:
@@ -492,7 +492,7 @@ class TrackItem(QtCore.QObject):
             pen.setColor(Qt.darkGray)
         return pen
 
-    def drawConnectionRect(self, painter, point):
+    def drawConnectionRect(self, painter, point, is_one):
         """Draws a connection rectangle on the given painter at the given point.
 
         :param painter: the painter to paint on
@@ -501,15 +501,21 @@ class TrackItem(QtCore.QObject):
         :type point: ``QPointF``
         """
         pen = self.getPen()
-        pen.setWidth(0)
+        pen.setWidth(0) #sets width of connection rectangle outline.
         if self.selected:
             pen.setColor(Qt.magenta)
         else:
             pen.setColor(Qt.cyan)
         painter.setPen(pen)
         painter.setBrush(Qt.NoBrush)
-        topLeft = point + QtCore.QPointF(-5, -5)
-        painter.drawRect(QtCore.QRectF(topLeft, QtCore.QSizeF(10, 10)))
+        if is_one:
+            topLeft = point + QtCore.QPointF(-10, -5) #positions rectangle.
+            painter.drawRect(QtCore.QRectF(topLeft, QtCore.QSizeF(20, 10)))  # sets size of connection rectangle.
+        elif not is_one:
+            topLeft = point + QtCore.QPointF(-5, -5)
+            painter.drawRect(QtCore.QRectF(topLeft, QtCore.QSizeF(20, 10)))  # sets size of connection rectangle.
+        #print("Top left",topLeft+'\n',"top Right:", topRight)
+        #painter.drawRect(QtCore.QRectF(topLeft, QtCore.QSizeF(10, 10)))#sets size of connection rectangle.
 
     def graphicsBoundingRect(self, itemId):
         """

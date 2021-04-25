@@ -53,5 +53,5 @@ class InvisibleLinkItem(lineitem.LineItem):
             else:
                 p.setPen(Qt.cyan)
             p.drawLine(self.line)
-            self.drawConnectionRect(p, self.line.p1())
-            self.drawConnectionRect(p, self.line.p2())
+            self.drawConnectionRect(p, self.line.p1(), True)
+            self.drawConnectionRect(p, self.line.p2(), False)
